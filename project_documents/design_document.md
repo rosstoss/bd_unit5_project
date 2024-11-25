@@ -4,55 +4,45 @@
 
 ## 1. Problem Statement
 
-OEMContextuals is a website dedicated to providing end users access to high quality OE/OEM car parts, regardless of make and model, that are
-competitvely priced with other services on the web that sometimes offer the same service at a premium.
+RossByte is a personal website that will serve as a portfolio of myself. It will contain a homepage introducing
+myself, an about section, project gallery, contact form, and an admin panel to more simply update information like
+projects, skills, and other information.
 
-This service will provide a user with clearly laid out website functionality
-to help them find exactly what they need with the least drama possible.
-It will be set up as an information catalog with all its corresponding parts, including
-abilities for users to input filtering for which car they need help with and clearly laid out information
-with the ability for users to send suggestions on how to better the website and keep info current.
-
-Thus far, we aim to service a limited scope of cars and expand accordingly.
+This website will help to inform users of what I've done and what I can do.
 
 ## 2. Top Questions to Resolve in Review
 
-1.  What should the scope of information provided look like for products offered
-2.  Need to iron down how the search function will work on the site, so far using VINs or just make/model
-3.  Figure out how big of scope to cover so far as car support
+1.  What should admin panel look like and function/possibly implement other features
+2.  How exactly should contact form work
+3.  How should homepage function
 
 ## 3. Use Cases
 
-U1. \*As a user, I want to easily find parts and information for my car when I search the website with my make/model or VIN
+U1. \*As a user, I want to be able to easily navigate through the website logically and concisely
 
-U2. \*As a user, I want to be able to find resources for my car using the VIN or year, make, and model
+U2. \*As a user, I want to be able to submit a contact request
 
-U3. \*As a user, I want to be able to add suggestions to website and post information to forums
+U3. \*As an admin, I want to be able to easily update the information on the website using a CRUD system
 
 ## 4. Project Scope
 
-We intend to give user access to specific data about their car and provide a way for them to discuss and ask questions
-to other users.
+I intend to give the user clear, laid out access to the website that is easy to navigate.
 
 ### 4.1. In Scope
 
 _Which parts of the problem defined in Sections 1 and 3 will you solve with this
 design?_
 
-- Create a search function that works with a broad range of cars
-- Implement information about cars
-- Create forum-like service that allows communication with other users
+- Be able to provide users with a way to find out about Ryker
 
 ### 4.2. Out of Scope
 
-- It doesn't make sense to rollout the website with an absurd amount information for
-  every car brand, but rather want to focus on a few brands (1 - 5) going back 20 years
+- Don't feel like there is too much to go out of scope on because of it's simplicity
 
 # 5. Proposed Architecture Overview
 
-- The initial website will provide a basis of how the future website will look like,
-  offering the ability to find parts and information for the car you are looking for
-  and providing a simple and seamless design that works well and repeatedly.
+- The homepage will be clear and concise with different links to other pages on the website represented by boxes on 
+the webpage.
 
 # 6. API
 
@@ -64,64 +54,54 @@ _`SongModel`_ from the Unit 3 project._
 
 ```
 
-// CarPlatformModel
+// aboutModel
 
-String vin;
-String year;
-String make;
-String model;
-String trim;
-Integer mileage;
+String background
+StringList skills
+StringList interests
 
 ```
 
 ```
 
-// CustomerSuggestions
+// projectsModel
 
-String name;
-String email;
-String suggestion;
+StringList projects;
 
 ```
 
-## 6.2. Get Car Platform Information Endpoint
+## 6.2. Get Projects Endpoint
 
-_Describe the behavior of the first endpoint you will build into your service
-API. This should include what data it requires, what data it returns, and how it
-will handle any known failure cases. You should also include a sequence diagram
-showing how a user interaction goes from user to website to service to database,
-and back. This first endpoint can serve as a template for subsequent endpoints.
-(If there is a significant difference on a subsequent endpoint, review that with
-your team before building it!)_
+- Accepts GET requests from /projects
+- Can request all projects or a single project based upon an id assigned to that project using /projects/:id
 
-_(You should have a separate section for each of the endpoints you are expecting
-to build...)_
+## 6.3 Post New Project Endpoint
 
-- Accepts GET requests to /carPlatformModel/:vin
-- Accepts a VIN and returns the corresponding vehicle information \* If VIN breakdown does not match any vehicles in database, will throw a
-  'VehicleNotFoundException'
+- Accepts POST request to /projects
+- Adds new project to website portfolio, which could include project name, description,
+technologies used, and images that correspond to project
 
-## 6.3 Forum Endpoint
+## 6.4 Submit Contact Form Endpoint
 
-_(repeat, but you can use shorthand here, indicating what is different, likely
-primarily the data in/out and error conditions. If the sequence diagram is
-nearly identical, you can say in a few words how it is the same/different from
-the first endpoint)_
-
-- Accepts POST request to /userForums
-- Accepts data to be posted to message boards
+- Accepts POST requests to /contact
+- Used to send messages by a contact form, including visitor's name, email, and message
 
 # 7. Tables
 
-_Define the DynamoDB tables you will need for the data your service will use. It
-may be helpful to first think of what objects your service will need, then
-translate that to a table structure, like with the _`Playlist` POJO* versus the
-`playlists` table in the Unit 3 project.*
+- ProjectTable
 
-- CarPlatformTable
-  First part of VIN would be the partition key, which is brand specific
-  Sort key would be the rest of the VIN, identifying trim, year, etc.
+  - Stores information of projects using an: id, name, description, technologies used, link to project, 
+image url, when it was created, and if/when it was updated
+
+- SkillsTable
+
+  - Stores information about skills using an: id, skill name, proficiency level (ex. beginner to advanced), when it 
+was created, and when/if it was updated
+
+- ContactMessagesTable
+
+  - Stores messages sent through contact form using an: id, name of sender, email of sender, message content, and 
+message timestamp
 
 # 8. Pages
 
