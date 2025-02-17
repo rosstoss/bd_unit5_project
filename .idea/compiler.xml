@@ -25,5 +25,10 @@
         <module name="UnitProject.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="contact" target="11" />
+      <module name="contact.main" target="11" />
+      <module name="UnitProject.test" target="16" />
+    </bytecodeTargetLevel>
   </component>
 </project>

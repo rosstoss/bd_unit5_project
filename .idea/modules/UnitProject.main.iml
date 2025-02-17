@@ -5,7 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../template_java_project/build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
     </content>
     <content url="file://$MODULE_DIR$/../../template_java_project/src" dumb="true">
-      <excludeFolder url="file://$MODULE_DIR$/../../template_java_project/src/resources" />
+      <excludeFolder url="file://$MODULE_DIR$/../../template_java_project/src/main/resources" />
     </content>
   </component>
 </module>
