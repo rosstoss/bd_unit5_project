@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/UnitProject.main.iml" filepath="$PROJECT_DIR$/.idea/modules/UnitProject.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/bd_unit5_project.iml" filepath="$PROJECT_DIR$/.idea/bd_unit5_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/template_java_project/src/main/main.iml" filepath="$PROJECT_DIR$/template_java_project/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/template_java_project/src/resources/resources.iml" filepath="$PROJECT_DIR$/template_java_project/src/resources/resources.iml" />
       <module fileurl="file://$PROJECT_DIR$/template_java_project/tst/tst.iml" filepath="$PROJECT_DIR$/template_java_project/tst/tst.iml" />
     </modules>
   </component>
